@@ -56,6 +56,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'DjangoRestFramework.urls'
 
+REST_FRAMEWORK = {
+    "NONE_FIELD_ERRORS_KEY" : "errors" 
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
