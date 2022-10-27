@@ -17,3 +17,4 @@ from posts import serializers
 class PostViewset(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer  
+    
