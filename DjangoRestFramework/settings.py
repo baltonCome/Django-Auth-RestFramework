@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'posts',
-    'rest_framework'
+    'accounts',
+    'rest_framework',
+    'rest_framework.authtoken', 
 ]
+
+AUTH_USER_MODEL = "accounts.User"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,6 +56,17 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'DjangoRestFramework.urls'
+
+REST_FRAMEWORK = {
+    "NONE_FIELD_ERRORS_KEY" : "errors",
+    "DEFAULT_AUTHENTICATION_CLASSES":(
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ), 
+    "DEFAULT_PERMISSION_CLASSES":(
+        "rest_framework.permissions.IsAuthenticated",
+    ),
+}
 
 TEMPLATES = [
     {
