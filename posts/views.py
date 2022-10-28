@@ -11,10 +11,12 @@ from . serializers import PostSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, status
 from posts import serializers
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
 class PostViewset(viewsets.ModelViewSet):
+    #permission_classes = [IsAuthenticated]
     queryset = Post.objects.all()
     serializer_class = PostSerializer  
     
