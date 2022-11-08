@@ -12,7 +12,7 @@ class Post(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
     link = models.TextField(blank=True)
-    proceure = models.TextField(blank=True)
+    procedure = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add = True)
     author = models.ForeignKey(User, on_delete = models.CASCADE, related_name = "posts")
 
