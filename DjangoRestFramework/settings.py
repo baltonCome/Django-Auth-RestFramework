@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'posts',
-    'accounts',
+    'accounts',   
     'rest_framework',
     'rest_framework.authtoken', 
 ]
@@ -59,7 +59,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'DjangoRestFramework.urls'
 
 REST_FRAMEWORK = {
-    "NONE_FIELD_ERRORS_KEY" : "errors",
+    "NONE_FIELD_ERRORS_KEY" : "errors",  
     "DEFAULT_AUTHENTICATION_CLASSES":(
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",

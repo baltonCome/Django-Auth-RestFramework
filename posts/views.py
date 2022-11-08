@@ -9,14 +9,15 @@ from rest_framework.decorators import api_view, APIView, permission_classes
 from . models import Post
 from . serializers import PostSerializer
 from django.shortcuts import get_object_or_404
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly, IsAdminUser
 from accounts.serializers import CurrentUserPostsSerializer
-
 from posts import serializers
+from .permissions import ReadOnly, AuthorOrReadOnly
 
 # Create your views here.
 
 @api_view(http_method_names=["GET", "POST"])
+@permission_classes([AllowAny])
 def homepage(request:Request):
 
     if request.method == "POST":
@@ -34,9 +35,9 @@ class PostListCreateView(
 ):
 
     serializer_class = PostSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Post.objects.all()
-
+    
     def perform_create(self, serializer):
         user = self.request.user
         serializer.save(author = user)
@@ -58,7 +59,7 @@ class PostRetrieveUpdateDeleteView(
 ):
     serializer_class = PostSerializer
     queryset = Post.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AuthorOrReadOnly]
 
     def get(self, request:Request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
