@@ -4,6 +4,7 @@ from rest_framework import serializers
 from .models import User
 from rest_framework.authtoken.models import Token
 
+
 class SignUpSerializer(serializers.ModelSerializer):
     email = serializers.CharField(max_length = 50)
     username = serializers.CharField(max_length = 50)
@@ -39,6 +40,7 @@ class CurrentUserPostsSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'posts']
+
 
 
 # class CurrentUserPostsSerializer(serializers.ModelSerializer):
