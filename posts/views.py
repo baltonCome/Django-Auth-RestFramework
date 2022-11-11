@@ -86,4 +86,19 @@ def get_posts_for_current_user(request : Request):
     )
   
 
-    
+class ListPostsForAuthor(
+    generics.GenericAPIView,
+    mixins.ListModelMixin
+):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes=[IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+
+        return Post.objects.filter(author=user)
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
