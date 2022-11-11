@@ -42,6 +42,13 @@ class CurrentUserPostsSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'posts']
 
 
+class UserDataSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email']
+
+
 
 # class CurrentUserPostsSerializer(serializers.ModelSerializer):
 

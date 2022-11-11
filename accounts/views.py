@@ -10,9 +10,12 @@ from rest_framework.request import Request
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate
 from .tokens import create_jwt_pair_for_user
+from rest_framework.decorators import api_view, APIView, permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly, IsAdminUser
 
 # Create your views here.
 
+@permission_classes([AllowAny])
 class SignUpView(generics.GenericAPIView):
     serializer_class = SignUpSerializer
 
@@ -32,7 +35,8 @@ class SignUpView(generics.GenericAPIView):
             return Response(data=response, status=status.HTTP_201_CREATED)
         return Response(data = serializer.errors, status= status.HTTP_400_BAD_REQUEST)
 
-    
+
+@permission_classes([AllowAny])
 class LoginView(APIView):
     
     def post(self, request:Request):
