@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\balton.come\Projects\Django-Auth-RestFramework\env"
+VIRTUAL_ENV="C:\Users\Savagery-Enterprises\Projects\Django-Auth-RestFramework\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
