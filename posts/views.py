@@ -95,7 +95,7 @@ class ListPostsForAuthor(
 @permission_classes([AllowAny])
 def postWithUser(request:Request):
 
-    posts = Post.objects.all()
+    posts = Post.objects.order_by('-created')
     serializer = PostWithUserSerializer(instance=posts, many = True)
     response = {
         "message" : "Posts",

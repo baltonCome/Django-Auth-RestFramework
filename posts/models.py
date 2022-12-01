@@ -10,6 +10,7 @@ User = get_user_model()
 # Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=50)
+    topic = models.CharField(max_length=50, blank=True)
     content = models.TextField()
     link = models.TextField(blank=True)
     procedure = models.TextField(blank=True)
