@@ -61,4 +61,3 @@ class UserDataSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = User
 #         fields = ['id', 'username', 'email', 'posts']
-
